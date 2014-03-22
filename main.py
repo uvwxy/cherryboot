@@ -16,6 +16,7 @@ cfgParser.read("server.config")
 dirCss = os.path.join(os.path.dirname(os.path.realpath(__file__)), "www-lib/css/")
 dirFonts = os.path.join(os.path.dirname(os.path.realpath(__file__)), "www-lib/fonts/")
 dirJs = os.path.join(os.path.dirname(os.path.realpath(__file__)), "www-lib/js/")
+dirAmCharts = os.path.join(os.path.dirname(os.path.realpath(__file__)), "www-lib/amcharts/")
 
 print dirCss
 print dirFonts
@@ -35,6 +36,10 @@ conf = {
      '/js':
             {'tools.staticdir.on': True,
              'tools.staticdir.dir': dirJs,
+            },
+     '/amcharts': #http://www.amcharts.com/download/ and you will find the amcharts folder
+            {'tools.staticdir.on': True,
+             'tools.staticdir.dir': dirAmCharts,
             },
     'global': {
         'server.socket_host': cfgParser.get("server", "host"),

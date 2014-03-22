@@ -25,6 +25,12 @@ class ExamplePage(object):
     title = "Title"
     return tmpl.render(title=title, params=kw)
 
+
+  @cherrypy.expose
+  def charttest(self, *args, **kw):
+    tmpl = lookup.get_template("charttest.html")
+    title = "Title"
+    return tmpl.render(title=title, params=kw)
   
   @cherrypy.expose
   @cherrypy.tools.json_out()
