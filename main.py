@@ -9,7 +9,7 @@ import cherrypy
 import os
 import ConfigParser
 from www.page.main import ExamplePage
-from www.rest.main import ExampleRest
+from www.rest.main import RestSeriesData, RestSeriesConfig
 
 cfgParser = ConfigParser.ConfigParser()
 cfgParser.read("server.config")
@@ -37,7 +37,7 @@ conf = {
             {'tools.staticdir.on': True,
              'tools.staticdir.dir': dirJs,
             },
-     '/amcharts': #http://www.amcharts.com/download/ and you will find the amcharts folder
+     '/amcharts':  # http://www.amcharts.com/download/ and you will find the amcharts folder
             {'tools.staticdir.on': True,
              'tools.staticdir.dir': dirAmCharts,
             },
@@ -46,10 +46,13 @@ conf = {
         'server.socket_port': cfgParser.getint("server", "port"),
     }
 }
-
-cherrypy.tree.mount(ExamplePage(), "/", config=conf);
-cherrypy.tree.mount(ExampleRest(), "/api/v1/songs", {'/':
+restConfig = {'/':
         {'request.dispatch': cherrypy.dispatch.MethodDispatcher()}
-    });
+    };
+    
+cherrypy.tree.mount(ExamplePage(), "/", config=conf);
+cherrypy.tree.mount(RestSeriesData(), "/api/v1/chart/data", restConfig);
+cherrypy.tree.mount(RestSeriesConfig(), "/api/v1/chart/config", restConfig);
+
 cherrypy.engine.start()
 cherrypy.engine.block();

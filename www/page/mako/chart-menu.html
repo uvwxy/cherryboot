@@ -5,12 +5,15 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link href="css/bootstrap.min.css" rel="stylesheet">
+<link href="css/overcast/jquery-ui-1.10.4.custom.min.css" rel="stylesheet">
 <style type="text/css">
 body {
 	padding-top: 50px;
 }
 </style>
 <script src="js/jquery-1.11.0.min.js"></script>
+<script src="js/jquery-ui-1.10.4.custom.min.js"></script>
+
 <%block name="scripts"> </%block>
 </head>
 <body>
@@ -28,7 +31,7 @@ body {
 			</div>
 			<div class="collapse navbar-collapse">
 				<ul class="nav navbar-nav">
-					<li class="active"><a href="#">Home</a></li>
+					<li><a href="/">Home</a></li>
 					<li><a href="/charttest">Chart-Test</a></li>
 					<li><a href="#contact">Contact</a></li>
 				</ul>
@@ -40,8 +43,6 @@ body {
 	<div class="container">${self.body()}</div>
 	<!-- /.container -->
 
-	<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-	<script src="js/jquery-1.11.0.min.js"></script>
 	<!-- Include all compiled plugins (below), or include individual files as needed -->
 	<script src="js/bootstrap.min.js"></script>
 </body>
